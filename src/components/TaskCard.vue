@@ -43,26 +43,7 @@
     ></textarea>
     
     <div class="task-meta">
-      <!-- Düzenlenebilir Tarih -->
-      <span 
-        class="task-date editable-field"
-        :class="{ 'editing': editingField === 'date' }"
-        @dblclick="startEditing('date')"
-        v-if="editingField !== 'date'"
-      >
-        <i class="fas fa-calendar-alt"></i>
-        {{ formatTaskDate(task.date) }}
-      </span>
-      <input 
-        v-if="editingField === 'date'"
-        v-model="editValues.date"
-        @blur="saveField('date')"
-        @keyup.enter="saveField('date')"
-        @keyup.escape="cancelEdit"
-        class="edit-input date-input"
-        ref="dateInput"
-        type="date"
-      />
+      <!-- Sadece öncelik, estimatedTime ve diğer alanlar kalsın. Tarih ile ilgili hiçbir satır olmasın. -->
       
       <!-- Düzenlenebilir Öncelik -->
       <span 
@@ -157,21 +138,6 @@ export default {
       return priorityMap[priority] || priority
     }
 
-    const formatTaskDate = (dateStr) => {
-      if (!dateStr) return 'Tarih seçilmedi'
-      
-      try {
-        const date = new Date(dateStr + 'T00:00:00')
-        return date.toLocaleDateString('tr-TR', {
-          day: '2-digit',
-          month: '2-digit',
-          year: 'numeric'
-        })
-      } catch (error) {
-        return 'Geçersiz tarih'
-      }
-    }
-
     const startEditing = (field) => {
       editingField.value = field
       isEditing.value = true
@@ -226,7 +192,6 @@ export default {
       dateInput,
       handleDragStart,
       getPriorityText,
-      formatTaskDate,
       startEditing,
       saveField,
       cancelEdit,
