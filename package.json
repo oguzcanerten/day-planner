@@ -1,0 +1,20 @@
+{
+  "name": "day-planner",
+  "version": "1.0.0",
+  "description": "Yazılım mühendisleri için günlük iş planlama uygulaması",
+  "main": "main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "firebase": "^12.0.0",
+    "vue": "^3.3.4",
+    "vuedraggable": "^4.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.3.4",
+    "vite": "^4.4.9"
+  }
+}
